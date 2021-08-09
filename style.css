@@ -1,0 +1,106 @@
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  animation-name: fade;
+  animation-duration: 0.8s;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+#container h1 {
+    font-size: 75px;
+}
+
+#subtitle {
+    display: none;
+    margin-top: 30px;
+    font-size: 20px;
+    color: #161616;
+}
+
+.timer {
+  font-weight: bolder;
+  font-size: 35px;
+  text-align: right;
+}
+
+.desc {
+  margin-right: 15px;
+}
+
+#images {
+  display: none;
+  margin-top: 40px;
+}
+
+img {
+  margin-right: 10px;
+  border-radius: 5px;
+  width: 100px;
+}
+
+#right_img {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+/* Set settings for screens with min width of 500px */
+@media screen and (min-width: 500px) {
+  img {
+    width: 150px;
+  }
+
+  #subtitle {
+    font-size: 25px;
+  }
+}
+
+/* Set settings for screens with min width of 768px */
+@media screen and (min-width: 768px) {
+  img {
+    width: 200px;
+  }
+
+  #subtitle {
+    font-size: 30px;
+  }
+}
+
+/* Set settings for screens with min width of 920px */
+@media screen and (min-width: 920px) {
+  .timer {
+    display: inline-block;
+    text-align: left;
+    margin-right: 10px;
+  }
+
+  #subtitle {
+    font-size: 35px;
+  }
+}
