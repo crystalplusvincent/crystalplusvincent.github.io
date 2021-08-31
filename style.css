@@ -70,6 +70,23 @@ img {
   transform: scaleX(-1);
 }
 
+#announcements {
+  margin-top: 22px;
+}
+
+.regular {
+  color: #161616;
+  font-size: 20px;
+  text-align: center;
+}
+
+#turtles {
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Set settings for screens with min width of 500px */
 @media screen and (min-width: 500px) {
   img {
@@ -77,6 +94,10 @@ img {
   }
 
   #subtitle {
+    font-size: 25px;
+  }
+
+  .regular {
     font-size: 25px;
   }
 }
@@ -90,6 +111,10 @@ img {
   #subtitle {
     font-size: 30px;
   }
+
+  .regular {
+    font-size: 30px;
+  }
 }
 
 /* Set settings for screens with min width of 920px */
@@ -101,6 +126,10 @@ img {
   }
 
   #subtitle {
+    font-size: 35px;
+  }
+
+  .regular {
     font-size: 35px;
   }
 }
