@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
     rel="stylesheet"
   />
 
@@ -23,87 +23,241 @@
 
 <body>
 
-  <!-- STARS -->
-  <div class="stars" aria-hidden="true">
-    <span style="--x: 5%;  --y: 10%; --s: 2px; --d: 3.2s;"></span>
-    <span style="--x: 12%; --y: 25%; --s: 1px; --d: 4.1s;"></span>
-    <span style="--x: 18%; --y: 8%;  --s: 2px; --d: 2.7s;"></span>
-    <span style="--x: 25%; --y: 32%; --s: 1px; --d: 3.8s;"></span>
-    <span style="--x: 31%; --y: 16%; --s: 2px; --d: 4.4s;"></span>
-    <span style="--x: 38%; --y: 6%;  --s: 1px; --d: 3.1s;"></span>
-    <span style="--x: 43%; --y: 28%; --s: 2px; --d: 2.9s;"></span>
-    <span style="--x: 50%; --y: 12%; --s: 1px; --d: 4.7s;"></span>
-    <span style="--x: 57%; --y: 35%; --s: 2px; --d: 3.5s;"></span>
-    <span style="--x: 63%; --y: 18%; --s: 1px; --d: 2.6s;"></span>
-    <span style="--x: 69%; --y: 7%;  --s: 2px; --d: 4.2s;"></span>
-    <span style="--x: 75%; --y: 29%; --s: 1px; --d: 3.3s;"></span>
-    <span style="--x: 81%; --y: 13%; --s: 2px; --d: 2.8s;"></span>
-    <span style="--x: 88%; --y: 23%; --s: 1px; --d: 4.5s;"></span>
-    <span style="--x: 94%; --y: 8%;  --s: 2px; --d: 3.7s;"></span>
+  <!-- =========================================
+       STARRY SKY
+       Stars are generated automatically in CSS/JS.
+  ========================================== -->
 
-    <span style="--x: 8%;  --y: 43%; --s: 1px; --d: 3.9s;"></span>
-    <span style="--x: 16%; --y: 51%; --s: 2px; --d: 4.3s;"></span>
-    <span style="--x: 28%; --y: 45%; --s: 1px; --d: 2.5s;"></span>
-    <span style="--x: 36%; --y: 55%; --s: 1px; --d: 3.4s;"></span>
-    <span style="--x: 61%; --y: 49%; --s: 1px; --d: 4.6s;"></span>
-    <span style="--x: 72%; --y: 43%; --s: 2px; --d: 3.0s;"></span>
-    <span style="--x: 85%; --y: 52%; --s: 1px; --d: 4.0s;"></span>
-    <span style="--x: 97%; --y: 39%; --s: 1px; --d: 3.6s;"></span>
-  </div>
+  <div id="star-field" aria-hidden="true"></div>
 
 
-  <!-- COUNTER -->
+  <!-- =========================================
+       RELATIONSHIP COUNTER
+  ========================================== -->
+
   <main id="container">
 
     <div id="counter">
+
       <p id="year" class="timer">00 Years</p>
+
       <p id="day" class="timer">00 Days</p>
+
       <p id="hour" class="timer">00 Hours</p>
+
       <p id="minute" class="timer">00 Minutes</p>
+
       <p id="second" class="timer">00 Seconds</p>
+
     </div>
 
   </main>
 
 
-  <!-- PIXEL CHICAGO SKYLINE -->
+  <!-- =========================================
+       CHICAGO SKYLINE
+  ========================================== -->
+
   <div class="skyline" aria-hidden="true">
 
-    <div class="building b1"></div>
-    <div class="building b2"></div>
-    <div class="building b3"></div>
 
-    <div class="building b4">
-      <div class="antenna"></div>
+    <!-- LEFT SIDE -->
+
+    <div class="building building-small"></div>
+
+    <div class="building building-medium">
+      <div class="roof-step"></div>
     </div>
 
-    <div class="building b5"></div>
+    <div class="building building-short"></div>
 
-    <!-- Willis Tower -->
+    <div class="building building-medium-tall"></div>
+
+    <div class="building building-small"></div>
+
+
+    <!-- WILLIS TOWER -->
+
     <div class="willis">
-      <div class="willis-antenna left"></div>
-      <div class="willis-antenna right"></div>
 
-      <div class="willis-top"></div>
-      <div class="willis-mid"></div>
-      <div class="willis-base"></div>
+      <div class="willis-antenna antenna-left"></div>
+      <div class="willis-antenna antenna-right"></div>
+
+      <div class="willis-level willis-level-1"></div>
+      <div class="willis-level willis-level-2"></div>
+      <div class="willis-level willis-level-3"></div>
+
     </div>
 
-    <div class="building b6"></div>
-    <div class="building b7"></div>
-    <div class="building b8"></div>
-    <div class="building b9"></div>
 
-    <!-- Hancock-ish silhouette -->
+    <!-- MID LEFT -->
+
+    <div class="building building-short"></div>
+
+    <div class="building building-medium"></div>
+
+    <div class="building building-small"></div>
+
+    <div class="building building-tall-thin"></div>
+
+    <div class="building building-short"></div>
+
+    <div class="building building-medium">
+      <div class="tiny-antenna"></div>
+    </div>
+
+    <div class="building building-small"></div>
+
+
+    <!-- CENTER -->
+
+    <div class="building building-medium-tall"></div>
+
+    <div class="building building-short"></div>
+
+    <div class="building building-medium"></div>
+
+    <div class="building building-small"></div>
+
+
+    <!-- POINTED TOWER -->
+
+    <div class="point-tower">
+      <div class="point-roof"></div>
+    </div>
+
+
+    <div class="building building-medium"></div>
+
+    <div class="building building-short"></div>
+
+
+    <!-- AON-STYLE TOWER -->
+
+    <div class="aon"></div>
+
+
+    <div class="building building-small"></div>
+
+    <div class="building building-medium"></div>
+
+    <div class="building building-short"></div>
+
+    <div class="building building-medium-tall"></div>
+
+    <div class="building building-small"></div>
+
+
+    <!-- HANCOCK -->
+
     <div class="hancock">
-      <div class="hancock-antenna left"></div>
-      <div class="hancock-antenna right"></div>
+
+      <div class="hancock-antenna hancock-left"></div>
+      <div class="hancock-antenna hancock-right"></div>
+
+      <div class="hancock-body"></div>
+
     </div>
 
-    <div class="building b10"></div>
-    <div class="building b11"></div>
+
+    <!-- RIGHT SIDE -->
+
+    <div class="building building-short"></div>
+
+    <div class="building building-medium"></div>
+
+    <div class="building building-small"></div>
+
+    <div class="building building-medium-tall"></div>
+
+    <div class="building building-short"></div>
 
   </div>
+
+
+  <script>
+    /*
+      -----------------------------------------
+      STAR GENERATOR
+      -----------------------------------------
+
+      Creates the same style of 8-point stars:
+      a + superimposed over an X.
+
+      Change STAR_COUNT if you want more/fewer.
+    */
+
+    const starField = document.getElementById("star-field");
+
+    const STAR_COUNT = 115;
+
+    for (let i = 0; i < STAR_COUNT; i++) {
+
+      const star = document.createElement("span");
+
+      star.classList.add("star");
+
+      /*
+        Keep stars primarily in the upper
+        portion of the page.
+      */
+
+      const x = Math.random() * 100;
+      const y = Math.random() * 68;
+
+      /*
+        Mostly tiny stars.
+        A few are slightly larger.
+      */
+
+      const sizeChance = Math.random();
+
+      let size;
+
+      if (sizeChance > 0.94) {
+        size = 6;
+      }
+
+      else if (sizeChance > 0.72) {
+        size = 4;
+      }
+
+      else {
+        size = 2;
+      }
+
+      /*
+        Random twinkle speeds keep the sky
+        from pulsing all at once.
+      */
+
+      const duration =
+        2.5 + Math.random() * 3.5;
+
+      const delay =
+        Math.random() * -5;
+
+      star.style.left = x + "%";
+      star.style.top = y + "%";
+
+      star.style.setProperty(
+        "--star-size",
+        size + "px"
+      );
+
+      star.style.setProperty(
+        "--twinkle-duration",
+        duration + "s"
+      );
+
+      star.style.setProperty(
+        "--twinkle-delay",
+        delay + "s"
+      );
+
+      starField.appendChild(star);
+    }
+  </script>
 
 </body>
 </html>
