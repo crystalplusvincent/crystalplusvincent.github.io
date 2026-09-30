@@ -1,60 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="icon"
-      href="assets/favicon.ico"
-    />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>crystalplusvincent</title>
+  <link rel="icon" href="assets/favicon.ico" />
 
-    <!-- Import the webpage's stylesheet -->
-    <link rel="stylesheet" href="style.css" />
+  <title>crystalplusvincent</title>
 
-    <!-- External JS -->
-    <script src="script.js"></script> 
+  <link rel="stylesheet" href="style.css" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-      <div id="container">
-        <div id="counter">
-          <p id="year" class="years timer">00 Years</p>
-          
-          <p id="day" class="days timer">00 Days</p>
-  
-          <p id="hour" class="hours timer">00 Hours</p>
-          
-          <p id="minute" class="minutes timer">00 Minutes</p>
-         
-          <p id="second" class="seconds timer">00 Seconds</p>
-          
-        </div>
-        
-        <p id="subtitle">Crystals are treasured, và 'Ngọc' rất hiếm. Let's be together, and let me be him. </p>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-        <div id="images">
-          <img id="left_img" src="https://media.tenor.com/qFwJ8CV9sLEAAAAi/cinnamoroll-sanrio-dance.gif" alt="sanrio">
-          <img id="right_img" src="https://media.tenor.com/qFwJ8CV9sLEAAAAi/cinnamoroll-sanrio-dance.gif" alt="sanrio">
-        </div>
-        <p class="regular">
-       happy 3 years my honey <3
-          </p>
-          
-          </p>
-          <div id="turtles">
-            <img src="https://gifdb.com/images/high/sanrio-fluffy-cinnamoroll-sweet-food-lakhkyekeiq9e4zk.webp">
-          </div>
-          
-        </div>
-      </div>
-  </body>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+  <!-- STARS -->
+  <div class="stars" aria-hidden="true">
+    <span style="--x: 5%;  --y: 10%; --s: 2px; --d: 3.2s;"></span>
+    <span style="--x: 12%; --y: 25%; --s: 1px; --d: 4.1s;"></span>
+    <span style="--x: 18%; --y: 8%;  --s: 2px; --d: 2.7s;"></span>
+    <span style="--x: 25%; --y: 32%; --s: 1px; --d: 3.8s;"></span>
+    <span style="--x: 31%; --y: 16%; --s: 2px; --d: 4.4s;"></span>
+    <span style="--x: 38%; --y: 6%;  --s: 1px; --d: 3.1s;"></span>
+    <span style="--x: 43%; --y: 28%; --s: 2px; --d: 2.9s;"></span>
+    <span style="--x: 50%; --y: 12%; --s: 1px; --d: 4.7s;"></span>
+    <span style="--x: 57%; --y: 35%; --s: 2px; --d: 3.5s;"></span>
+    <span style="--x: 63%; --y: 18%; --s: 1px; --d: 2.6s;"></span>
+    <span style="--x: 69%; --y: 7%;  --s: 2px; --d: 4.2s;"></span>
+    <span style="--x: 75%; --y: 29%; --s: 1px; --d: 3.3s;"></span>
+    <span style="--x: 81%; --y: 13%; --s: 2px; --d: 2.8s;"></span>
+    <span style="--x: 88%; --y: 23%; --s: 1px; --d: 4.5s;"></span>
+    <span style="--x: 94%; --y: 8%;  --s: 2px; --d: 3.7s;"></span>
+
+    <span style="--x: 8%;  --y: 43%; --s: 1px; --d: 3.9s;"></span>
+    <span style="--x: 16%; --y: 51%; --s: 2px; --d: 4.3s;"></span>
+    <span style="--x: 28%; --y: 45%; --s: 1px; --d: 2.5s;"></span>
+    <span style="--x: 36%; --y: 55%; --s: 1px; --d: 3.4s;"></span>
+    <span style="--x: 61%; --y: 49%; --s: 1px; --d: 4.6s;"></span>
+    <span style="--x: 72%; --y: 43%; --s: 2px; --d: 3.0s;"></span>
+    <span style="--x: 85%; --y: 52%; --s: 1px; --d: 4.0s;"></span>
+    <span style="--x: 97%; --y: 39%; --s: 1px; --d: 3.6s;"></span>
+  </div>
+
+
+  <!-- COUNTER -->
+  <main id="container">
+
+    <div id="counter">
+      <p id="year" class="timer">00 Years</p>
+      <p id="day" class="timer">00 Days</p>
+      <p id="hour" class="timer">00 Hours</p>
+      <p id="minute" class="timer">00 Minutes</p>
+      <p id="second" class="timer">00 Seconds</p>
+    </div>
+
+  </main>
+
+
+  <!-- PIXEL CHICAGO SKYLINE -->
+  <div class="skyline" aria-hidden="true">
+
+    <div class="building b1"></div>
+    <div class="building b2"></div>
+    <div class="building b3"></div>
+
+    <div class="building b4">
+      <div class="antenna"></div>
+    </div>
+
+    <div class="building b5"></div>
+
+    <!-- Willis Tower -->
+    <div class="willis">
+      <div class="willis-antenna left"></div>
+      <div class="willis-antenna right"></div>
+
+      <div class="willis-top"></div>
+      <div class="willis-mid"></div>
+      <div class="willis-base"></div>
+    </div>
+
+    <div class="building b6"></div>
+    <div class="building b7"></div>
+    <div class="building b8"></div>
+    <div class="building b9"></div>
+
+    <!-- Hancock-ish silhouette -->
+    <div class="hancock">
+      <div class="hancock-antenna left"></div>
+      <div class="hancock-antenna right"></div>
+    </div>
+
+    <div class="building b10"></div>
+    <div class="building b11"></div>
+
+  </div>
+
+</body>
 </html>
-
