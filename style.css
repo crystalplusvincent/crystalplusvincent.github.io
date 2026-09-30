@@ -1,15 +1,26 @@
+/* ================================
+   PAGE FADE
+================================ */
+
 @keyframes fade {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
 }
 
+
+/* ================================
+   RESET
+================================ */
+
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html,
@@ -19,123 +30,505 @@ body {
 }
 
 body {
+  position: relative;
+  overflow: hidden;
+
   font-family: "Inter", sans-serif;
+
   animation-name: fade;
   animation-duration: 0.8s;
+
+  color: #f8f6eb;
+
+  /* Midnight blue sky */
+  background:
+    linear-gradient(
+      to bottom,
+      #020617 0%,
+      #040b22 35%,
+      #071431 68%,
+      #0b1c3b 100%
+    );
 }
+
+
+/* ================================
+   STARS
+================================ */
+
+.stars {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 75%;
+
+  z-index: 1;
+
+  pointer-events: none;
+}
+
+.stars span {
+  position: absolute;
+
+  left: var(--x);
+  top: var(--y);
+
+  width: var(--s);
+  height: var(--s);
+
+  background: #fffdf0;
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 3px rgba(255, 255, 255, 0.9),
+    0 0 7px rgba(190, 210, 255, 0.5);
+
+  animation:
+    twinkle var(--d) ease-in-out infinite alternate;
+}
+
+
+@keyframes twinkle {
+
+  0% {
+    opacity: 0.25;
+    transform: scale(0.7);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+}
+
+
+/* ================================
+   COUNTER CONTAINER
+================================ */
 
 #container {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+  position: relative;
+
+  z-index: 10;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+
+  /*
+    Pushes the counter slightly upward
+    so it sits in the open sky.
+  */
+  padding-bottom: 18vh;
 }
 
-#container h1 {
-    font-size: 75px;
-}
 
-#subtitle {
-    display: none;
-    margin-top: 30px;
-    font-size: 20px;
-    color: #161616;
+/* ================================
+   COUNTER
+================================ */
+
+#counter {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
 }
 
 .timer {
-  font-weight: bolder;
-  font-size: 35px;
-  text-align: right;
-}
+  font-weight: 400;
 
-.desc {
-  margin-right: 15px;
-}
+  font-size: 30px;
 
-#images {
-  display: none;
-  margin-top: 40px;
-}
+  letter-spacing: 0.05em;
 
-img {
-  margin-right: 10px;
-  border-radius: 5px;
-  /* width: 100px; Making image bigger for spongebob */
-  width: 250px;
-}
-
-#right_img {
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
-}
-
-#announcements {
-  margin-top: 22px;
-}
-
-.regular {
-  color: #161616;
-  font-size: 20px;
   text-align: center;
+
+  color: #fffdf4;
+
+  text-shadow:
+    0 0 8px rgba(255, 255, 255, 0.15);
 }
 
-#turtles {
-  margin: 10px;
+
+/* ================================
+   CHICAGO SKYLINE
+================================ */
+
+.skyline {
+  position: fixed;
+
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 30vh;
+
+  z-index: 5;
+
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+
+  /*
+    Ground + buildings blend together.
+  */
+  background: #01040d;
+
+  image-rendering: pixelated;
+}
+
+
+/* ================================
+   GENERIC BUILDINGS
+================================ */
+
+.building {
+  position: relative;
+
+  flex-shrink: 0;
+
+  background: #020713;
+
+  border-top:
+    2px solid rgba(56, 79, 116, 0.25);
+}
+
+
+.b1 {
+  width: 7%;
+  height: 31%;
+}
+
+.b2 {
+  width: 8%;
+  height: 48%;
+}
+
+.b3 {
+  width: 6%;
+  height: 39%;
+}
+
+.b4 {
+  width: 8%;
+  height: 65%;
+}
+
+.b5 {
+  width: 7%;
+  height: 45%;
+}
+
+.b6 {
+  width: 7%;
+  height: 58%;
+}
+
+.b7 {
+  width: 8%;
+  height: 40%;
+}
+
+.b8 {
+  width: 7%;
+  height: 52%;
+}
+
+.b9 {
+  width: 8%;
+  height: 36%;
+}
+
+.b10 {
+  width: 8%;
+  height: 54%;
+}
+
+.b11 {
+  flex: 1;
+  height: 32%;
+}
+
+
+/* ================================
+   SMALL ROOFTOP ANTENNA
+================================ */
+
+.antenna {
+  position: absolute;
+
+  left: 50%;
+  bottom: 100%;
+
+  width: 3px;
+  height: 30px;
+
+  transform: translateX(-50%);
+
+  background: #050b1b;
+}
+
+
+/* ================================
+   WILLIS TOWER
+================================ */
+
+.willis {
+  position: relative;
+
+  flex-shrink: 0;
+
+  width: 11%;
+  height: 95%;
+
+  display: flex;
   justify-content: center;
+  align-items: flex-end;
 }
 
-/* Set settings for screens with min width of 500px */
+
+/* Wide bottom section */
+
+.willis-base {
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 65%;
+
+  background: #01040d;
+}
+
+
+/* Middle setback */
+
+.willis-mid {
+  position: absolute;
+
+  left: 14%;
+  bottom: 65%;
+
+  width: 72%;
+  height: 18%;
+
+  background: #01040d;
+}
+
+
+/* Upper setback */
+
+.willis-top {
+  position: absolute;
+
+  left: 29%;
+  bottom: 83%;
+
+  width: 42%;
+  height: 11%;
+
+  background: #01040d;
+}
+
+
+/* Willis antennas */
+
+.willis-antenna {
+  position: absolute;
+
+  bottom: 94%;
+
+  width: 2px;
+  height: 30%;
+
+  background: #131c31;
+}
+
+.willis-antenna.left {
+  left: 42%;
+}
+
+.willis-antenna.right {
+  right: 42%;
+}
+
+
+/* ================================
+   HANCOCK
+================================ */
+
+.hancock {
+  position: relative;
+
+  flex-shrink: 0;
+
+  width: 10%;
+  height: 76%;
+
+  background: #01040d;
+
+  clip-path:
+    polygon(
+      22% 15%,
+      78% 15%,
+      88% 100%,
+      12% 100%
+    );
+}
+
+
+.hancock-antenna {
+  position: absolute;
+
+  bottom: 84%;
+
+  width: 2px;
+  height: 24%;
+
+  background: #131c31;
+}
+
+.hancock-antenna.left {
+  left: 40%;
+}
+
+.hancock-antenna.right {
+  right: 40%;
+}
+
+
+/* ================================
+   PIXEL WINDOWS
+================================ */
+
+.building::after,
+.willis-base::after,
+.willis-mid::after {
+  content: "";
+
+  position: absolute;
+
+  top: 12px;
+  left: 10px;
+  right: 10px;
+  bottom: 8px;
+
+  opacity: 0.35;
+
+  /*
+    Tiny repeating pixel windows
+  */
+
+  background-image:
+    linear-gradient(
+      90deg,
+      transparent 0px,
+      transparent 5px,
+      #d8ca8a 5px,
+      #d8ca8a 7px,
+      transparent 7px,
+      transparent 13px
+    ),
+    linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 8px,
+      rgba(216, 202, 138, 0.7) 8px,
+      rgba(216, 202, 138, 0.7) 10px,
+      transparent 10px,
+      transparent 15px
+    );
+
+  background-size:
+    13px 15px,
+    13px 15px;
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
 @media screen and (min-width: 500px) {
-  img {
-    /* width: 150px; */
-    width: 300px;
+
+  .timer {
+    font-size: 32px;
   }
 
-  #subtitle {
-    font-size: 25px;
-  }
-
-  .regular {
-    font-size: 25px;
-  }
 }
 
-/* Set settings for screens with min width of 768px */
+
 @media screen and (min-width: 768px) {
-  img {
-    /* width: 200px; */
-    width: 450px;
+
+  .timer {
+    font-size: 34px;
   }
 
-  #subtitle {
-    font-size: 30px;
-  }
-
-  .regular {
-    font-size: 30px;
-  }
 }
 
-/* Set settings for screens with min width of 920px */
+
+/*
+  On desktop, return to your original
+  horizontal counter layout.
+*/
+
 @media screen and (min-width: 920px) {
+
+  #counter {
+    flex-direction: row;
+
+    gap: 0;
+  }
+
   .timer {
     display: inline-block;
+
+    font-size: 35px;
+
     text-align: left;
-    margin-right: 10px;
+
+    margin-right: 18px;
   }
 
-  #subtitle {
-    font-size: 35px;
+  .timer:last-child {
+    margin-right: 0;
   }
 
-  .regular {
-    font-size: 35px;
-  }
 }
-* {
-  font-size: calc(100% - 5px);
+
+
+/* ================================
+   SMALL PHONES
+================================ */
+
+@media screen and (max-width: 499px) {
+
+  #container {
+    padding-bottom: 15vh;
+  }
+
+  .timer {
+    font-size: 24px;
+  }
+
+  .skyline {
+    height: 24vh;
+  }
+
 }
