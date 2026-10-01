@@ -35,13 +35,6 @@ body {
 
     color: #f4e4c3;
 
-    /*
-        FALL SKY
-
-        Dark plum at the top,
-        burnt orange near the horizon.
-    */
-
     background:
         linear-gradient(
             to bottom,
@@ -90,11 +83,6 @@ body {
             39,
             0.34
         );
-
-    /*
-        Hard edges instead of blur
-        keeps the old-game appearance.
-    */
 
     box-shadow:
         18px 8px 0 rgba(99, 49, 39, 0.30),
@@ -166,11 +154,10 @@ body {
     color: #d86b28;
 
     /*
-        The starting horizontal position
-        is controlled by "left" in JS.
+        Deliberately stepped animation.
 
-        The transform is ONLY responsible
-        for falling, drifting and tumbling.
+        This gives us the low-FPS,
+        old-game movement.
     */
 
     animation:
@@ -209,15 +196,11 @@ body {
     left: 6px;
     top: 6px;
 
-    background:
-        currentColor;
+    background: currentColor;
 
     /*
-        The maple leaf is made entirely
+        Maple leaf made entirely
         from square pixels.
-
-        No emoji.
-        No image file.
     */
 
     box-shadow:
@@ -291,20 +274,6 @@ body {
 /* ================================= */
 /* FALLING LEAF ANIMATION            */
 /* ================================= */
-
-/*
-    IMPORTANT:
-
-    We are NOT using the transform
-    to position the leaf horizontally
-    anymore.
-
-    The leaf already has a random
-    "left" value from 0% to 100%.
-
-    These translate values only create
-    the wind drift.
-*/
 
 @keyframes leaf-fall {
 
@@ -432,32 +401,60 @@ body {
 
 
 /* ================================= */
-/* CHICAGO TITLE                     */
+/* PIXEL CHICAGO TITLE               */
 /* ================================= */
 
 #container h1 {
+    font-family:
+        "Courier New",
+        monospace;
+
     font-size: 72px;
 
-    font-weight: 700;
+    font-weight: 900;
 
     line-height: 1;
 
     text-transform: uppercase;
 
-    letter-spacing: 3px;
+    letter-spacing: 7px;
 
     color: #f5dfba;
 
+    margin-bottom: 27px;
+
+
+    /*
+        Hard-edged shadow rather than
+        a blurred shadow.
+
+        This gives CHICAGO a more
+        old-game / pixel-title look.
+    */
+
     text-shadow:
-        3px 3px 0
+        2px 0 0 #f5dfba,
+        -2px 0 0 #f5dfba,
+        0 2px 0 #f5dfba,
+        0 -2px 0 #f5dfba,
+
+        4px 4px 0
         rgba(
             72,
             34,
             29,
-            0.7
+            0.80
         );
 
-    margin-bottom: 25px;
+
+    /*
+        Avoid adding smooth transitions
+        to the title.
+    */
+
+    image-rendering: pixelated;
+
+    -webkit-font-smoothing: none;
 }
 
 
@@ -483,6 +480,10 @@ body {
 
 
 #counter span {
+    font-family:
+        "Courier New",
+        monospace;
+
     font-size: 19px;
 
     font-weight: 700;
@@ -549,11 +550,14 @@ body {
 }
 
 
-/*
-    No windows.
-    No lights.
 
-    Just the skyline silhouette.
+/*
+    Full skyline silhouette.
+
+    No windows.
+    No building lights.
+
+    Just the warm outline.
 */
 
 .skyline-line {
@@ -594,11 +598,26 @@ body {
 
 
     #container h1 {
-        font-size: 46px;
+        font-size: 45px;
 
-        letter-spacing: 2px;
+        letter-spacing: 4px;
 
-        margin-bottom: 20px;
+        margin-bottom: 21px;
+
+
+        text-shadow:
+            1px 0 0 #f5dfba,
+            -1px 0 0 #f5dfba,
+            0 1px 0 #f5dfba,
+            0 -1px 0 #f5dfba,
+
+            3px 3px 0
+            rgba(
+                72,
+                34,
+                29,
+                0.80
+            );
     }
 
 
