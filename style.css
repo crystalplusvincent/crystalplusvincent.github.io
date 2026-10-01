@@ -1,988 +1,807 @@
-/* =========================================
-   PAGE FADE
-========================================= */
+/* ================================= */
+/* RESET                             */
+/* ================================= */
 
 @keyframes fade {
 
-  from {
-    opacity: 0;
-  }
+    from {
+        opacity: 0;
+    }
 
-  to {
-    opacity: 1;
-  }
+    to {
+        opacity: 1;
+    }
 
 }
 
 
-/* =========================================
-   RESET
-========================================= */
-
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
 }
 
 
 html,
 body {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 
 body {
 
-  position: relative;
+    font-family:
+        "Courier New",
+        monospace;
 
-  overflow: hidden;
+    overflow: hidden;
 
-  font-family: "Inter", sans-serif;
-
-  animation:
-    fade 0.8s ease forwards;
-
-  color: #ffffff;
+    position: relative;
 
 
-  /*
-    MIDNIGHT BLUE SKY
-  */
+    /*
+        FALL SKY
 
-  background:
+        Dark plum at the top,
+        burnt orange near the horizon.
+    */
 
-    linear-gradient(
-      to bottom,
+    background:
+        linear-gradient(
+            to bottom,
 
-      #020617 0%,
+            #241821 0%,
 
-      #030a20 30%,
+            #352029 28%,
 
-      #06112c 65%,
+            #563029 58%,
 
-      #081833 100%
+            #88472c 80%,
+
+            #b26435 100%
+        );
+
+
+    color: #f4e4c3;
+
+
+    animation:
+        fade
+        0.8s
+        ease;
+}
+
+
+
+/* ================================= */
+/* AUTUMN BACKGROUND                 */
+/* ================================= */
+
+#autumn-background {
+
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+
+/* ================================= */
+/* PIXEL CLOUDS                      */
+/* ================================= */
+
+.cloud {
+
+    position: absolute;
+
+    height: 12px;
+
+    background: rgba(
+        99,
+        49,
+        39,
+        0.34
     );
 
+
+    /*
+        Hard edges instead of blur
+        keeps the old-game appearance.
+    */
+
+    box-shadow:
+
+        18px 8px 0 rgba(99, 49, 39, 0.30),
+
+        42px -4px 0 rgba(99, 49, 39, 0.26),
+
+        70px 6px 0 rgba(99, 49, 39, 0.22),
+
+        100px 0 0 rgba(99, 49, 39, 0.18);
 }
 
 
-/* =========================================
-   STAR FIELD
-========================================= */
 
-#star-field {
+.cloud-one {
 
-  position: fixed;
+    width: 180px;
 
-  inset: 0;
-
-  z-index: 1;
-
-  pointer-events: none;
-
+    left: 5%;
+    top: 20%;
 }
 
 
-/* =========================================
-   8-POINT STAR
 
-        |
-      \ | /
-    ----+----
-      / | \
-        |
+.cloud-two {
 
-   Made from:
-   +
-   plus
-   X
-========================================= */
+    width: 240px;
 
-.star {
+    right: 8%;
+    top: 32%;
 
-  position: absolute;
-
-  width: var(--star-size);
-  height: var(--star-size);
-
-  animation:
-
-    twinkle
-    var(--twinkle-duration)
-    ease-in-out
-    infinite
-    alternate;
-
-  animation-delay:
-    var(--twinkle-delay);
-
+    opacity: 0.7;
 }
 
 
-/*
-  Vertical + horizontal lines
-*/
 
-.star::before {
+.cloud-three {
 
-  content: "";
+    width: 140px;
 
-  position: absolute;
-
-  left: 50%;
-  top: 50%;
-
-  width: 100%;
-  height: 1px;
-
-  background: rgba(
-    255,
-    255,
-    245,
-    0.95
-  );
-
-  transform:
-    translate(-50%, -50%);
-
-  box-shadow:
-    0 0 4px rgba(255,255,255,0.35);
-
-}
-
-
-/*
-  X portion
-*/
-
-.star::after {
-
-  content: "";
-
-  position: absolute;
-
-  left: 50%;
-  top: 50%;
-
-  width: 100%;
-  height: 1px;
-
-  background: rgba(
-    255,
-    255,
-    245,
-    0.85
-  );
-
-  transform:
-    translate(-50%, -50%)
-    rotate(45deg);
-
-  box-shadow:
-    0 0 4px rgba(255,255,255,0.25);
-
-}
-
-
-/*
-  Add second line to both pseudo-elements
-  using shadows/rotation behavior.
-*/
-
-.star {
-
-  background:
-
-    linear-gradient(
-      to bottom,
-      transparent 0%,
-      transparent 46%,
-      rgba(255,255,245,0.9) 46%,
-      rgba(255,255,245,0.9) 54%,
-      transparent 54%
-    ),
-
-    linear-gradient(
-      to right,
-      transparent 0%,
-      transparent 46%,
-      rgba(255,255,245,0.9) 46%,
-      rgba(255,255,245,0.9) 54%,
-      transparent 54%
-    );
-
-}
-
-
-/* =========================================
-   STAR TWINKLE
-========================================= */
-
-@keyframes twinkle {
-
-  0% {
-
-    opacity: 0.25;
-
-    transform:
-      scale(0.75);
-
-  }
-
-
-  35% {
-
-    opacity: 0.65;
-
-    transform:
-      scale(0.95);
-
-  }
-
-
-  65% {
-
-    opacity: 1;
-
-    transform:
-      scale(1.2);
-
-  }
-
-
-  100% {
+    left: 35%;
+    top: 11%;
 
     opacity: 0.4;
+}
 
-    transform:
-      scale(0.85);
 
-  }
+
+/* ================================= */
+/* LEAF LAYER                        */
+/* ================================= */
+
+#leaf-layer {
+
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+}
+
+
+
+/* ================================= */
+/* LEAF CONTAINER                    */
+/* ================================= */
+
+.pixel-leaf {
+
+    position: absolute;
+
+    left: 0;
+    top: -40px;
+
+
+    width: 15px;
+    height: 17px;
+
+
+    color: #d86b28;
+
+
+    /*
+        IMPORTANT:
+
+        steps() deliberately removes
+        smooth 60fps movement.
+
+        This makes the leaves move
+        like sprites in an old game.
+    */
+
+    animation:
+
+        leaf-fall
+        var(--fall-duration)
+        steps(
+            var(--fall-frames),
+            end
+        )
+        var(--fall-delay)
+        infinite;
+
+
+    will-change:
+        transform,
+        opacity;
+}
+
+
+
+/* ================================= */
+/* PIXEL MAPLE LEAF                  */
+/* ================================= */
+
+/*
+    The leaf is constructed using
+    one central pixel block and
+    box-shadow copies.
+
+    No image file required.
+*/
+
+.pixel-leaf::before {
+
+    content: "";
+
+    position: absolute;
+
+
+    width: 3px;
+    height: 3px;
+
+
+    left: 6px;
+    top: 6px;
+
+
+    background:
+        currentColor;
+
+
+    box-shadow:
+
+        /* top point */
+
+        0 -6px 0 currentColor,
+
+        0 -3px 0 currentColor,
+
+
+        /* upper left */
+
+        -3px -3px 0 currentColor,
+
+        -6px -3px 0 currentColor,
+
+        -3px 0 0 currentColor,
+
+
+        /* upper right */
+
+        3px -3px 0 currentColor,
+
+        6px -3px 0 currentColor,
+
+        3px 0 0 currentColor,
+
+
+        /* side points */
+
+        -6px 0 0 currentColor,
+
+        6px 0 0 currentColor,
+
+
+        /* lower body */
+
+        -3px 3px 0 currentColor,
+
+        3px 3px 0 currentColor,
+
+        0 3px 0 currentColor,
+
+
+        /* stem */
+
+        0 6px 0 #8f3d22,
+
+        0 9px 0 #8f3d22;
+}
+
+
+
+/* ================================= */
+/* LEAF COLORS                       */
+/* ================================= */
+
+.pixel-leaf.orange {
+
+    color: #df7126;
+}
+
+
+.pixel-leaf.burnt {
+
+    color: #bb4b24;
+}
+
+
+.pixel-leaf.gold {
+
+    color: #e69a37;
+}
+
+
+.pixel-leaf.red {
+
+    color: #a93d29;
+}
+
+
+
+/* ================================= */
+/* FALLING ANIMATION                 */
+/* ================================= */
+
+@keyframes leaf-fall {
+
+    0% {
+
+        transform:
+
+            translate(
+                var(--start-x),
+                -60px
+            )
+
+            rotate(
+                0deg
+            )
+
+            scale(
+                var(--leaf-scale)
+            );
+
+
+        opacity: 0;
+
+    }
+
+
+    5% {
+
+        opacity:
+            var(--leaf-opacity);
+
+    }
+
+
+    20% {
+
+        transform:
+
+            translate(
+                calc(
+                    var(--start-x)
+                    +
+                    var(--drift-one)
+                ),
+
+                20vh
+            )
+
+            rotate(
+                45deg
+            )
+
+            scale(
+                var(--leaf-scale)
+            );
+
+    }
+
+
+    40% {
+
+        transform:
+
+            translate(
+                calc(
+                    var(--start-x)
+                    +
+                    var(--drift-two)
+                ),
+
+                40vh
+            )
+
+            rotate(
+                135deg
+            )
+
+            scale(
+                var(--leaf-scale)
+            );
+
+    }
+
+
+    60% {
+
+        transform:
+
+            translate(
+                calc(
+                    var(--start-x)
+                    +
+                    var(--drift-three)
+                ),
+
+                60vh
+            )
+
+            rotate(
+                225deg
+            )
+
+            scale(
+                var(--leaf-scale)
+            );
+
+    }
+
+
+    80% {
+
+        transform:
+
+            translate(
+                calc(
+                    var(--start-x)
+                    +
+                    var(--drift-four)
+                ),
+
+                80vh
+            )
+
+            rotate(
+                315deg
+            )
+
+            scale(
+                var(--leaf-scale)
+            );
+
+    }
+
+
+    95% {
+
+        opacity:
+            var(--leaf-opacity);
+
+    }
+
+
+    100% {
+
+        transform:
+
+            translate(
+                calc(
+                    var(--start-x)
+                    +
+                    var(--drift-five)
+                ),
+
+                110vh
+            )
+
+            rotate(
+                405deg
+            )
+
+            scale(
+                var(--leaf-scale)
+            );
+
+
+        opacity: 0;
+
+    }
 
 }
 
 
-/* =========================================
-   COUNTER AREA
-========================================= */
+
+/* ================================= */
+/* MAIN CONTENT                      */
+/* ================================= */
 
 #container {
 
-  position: relative;
+    position: relative;
 
-  z-index: 10;
-
-  width: 100%;
-  height: 100%;
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  justify-content: center;
+    z-index: 5;
 
 
-  /*
-    Slightly above true center.
-  */
+    width: 100%;
+    height: 100%;
 
-  padding-bottom: 12vh;
 
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+
+    text-align: center;
+
+
+    padding-bottom: 70px;
 }
 
 
-/* =========================================
-   COUNTER
-========================================= */
+
+/* ================================= */
+/* CHICAGO TITLE                     */
+/* ================================= */
+
+#container h1 {
+
+    font-size: 72px;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+
+    text-transform: uppercase;
+
+
+    letter-spacing: 3px;
+
+
+    color: #f5dfba;
+
+
+    text-shadow:
+
+        3px 3px 0
+        rgba(
+            72,
+            34,
+            29,
+            0.7
+        );
+
+
+    margin-bottom: 25px;
+}
+
+
+
+/* ================================= */
+/* COUNTER                           */
+/* ================================= */
 
 #counter {
 
-  display: flex;
+    display: flex;
 
-  flex-direction: column;
+    align-items: center;
 
-  align-items: center;
+    justify-content: center;
 
-  justify-content: center;
+    flex-wrap: wrap;
 
-  gap: 6px;
 
+    gap: 22px;
+
+
+    max-width: 1000px;
+
+
+    color: #f3c68b;
 }
 
 
-.timer {
 
-  font-weight: 400;
+#counter span {
 
-  font-size: 28px;
+    font-size: 19px;
 
-  letter-spacing: 0.05em;
+    font-weight: 700;
 
-  text-align: center;
 
-  color: rgba(
-    255,
-    255,
-    250,
-    0.95
-  );
+    letter-spacing: 1px;
 
-  text-shadow:
 
-    0 0 8px
-    rgba(255,255,255,0.12);
+    text-transform: uppercase;
 
+
+    white-space: nowrap;
 }
 
 
-/* =========================================
-   SKYLINE
-========================================= */
+
+/* ================================= */
+/* SUBTITLE                          */
+/* ================================= */
+
+#subtitle {
+
+    display: none;
+
+
+    margin-top: 30px;
+
+
+    font-size: 20px;
+
+
+    color: #f4e4c3;
+}
+
+
+
+/* ================================= */
+/* IMAGES                            */
+/* ================================= */
+
+#images {
+
+    display: none;
+}
+
+
+
+/* ================================= */
+/* SKYLINE                           */
+/* ================================= */
 
 .skyline {
 
-  position: fixed;
+    position: absolute;
 
-  left: 0;
-
-  bottom: 0;
-
-  width: 100%;
-
-  height: 24vh;
-
-  z-index: 5;
+    z-index: 3;
 
 
-  /*
-    Buildings automatically spread
-    across the screen.
-  */
-
-  display: flex;
-
-  align-items: flex-end;
-
-  justify-content: space-between;
+    left: 0;
+    bottom: 0;
 
 
-  /*
-    Thin baseline along the horizon.
-  */
-
-  border-bottom:
-
-    1px solid
-    rgba(255,255,255,0.65);
+    width: 100%;
+    height: 31%;
 
 
-  /*
-    IMPORTANT:
-
-    No dark fill behind skyline.
-
-    The sky remains visible.
-  */
-
-  background: transparent;
-
+    pointer-events: none;
 }
 
 
-/* =========================================
-   STANDARD BUILDING
-========================================= */
 
-.building {
+.skyline svg {
 
-  position: relative;
-
-  width: 3.2%;
-
-  min-width: 16px;
+    display: block;
 
 
-  /*
-    Same fill as sky:
-    effectively transparent.
-  */
-
-  background: transparent;
-
-
-  /*
-    WHITE LINE ART
-  */
-
-  border:
-
-    1px solid
-    rgba(255,255,255,0.72);
-
-  border-bottom: none;
-
+    width: 100%;
+    height: 100%;
 }
 
-
-/* =========================================
-   BUILDING HEIGHTS
-========================================= */
-
-.building-small {
-
-  height: 25%;
-
-}
-
-
-.building-short {
-
-  height: 34%;
-
-}
-
-
-.building-medium {
-
-  height: 47%;
-
-}
-
-
-.building-medium-tall {
-
-  height: 60%;
-
-}
-
-
-.building-tall-thin {
-
-  height: 70%;
-
-  width: 2.3%;
-
-}
-
-
-/* =========================================
-   STEPPED ROOF
-========================================= */
-
-.roof-step {
-
-  position: absolute;
-
-  width: 55%;
-
-  height: 7px;
-
-  left: 50%;
-
-  bottom: 100%;
-
-  transform:
-    translateX(-50%);
-
-  border:
-
-    1px solid
-    rgba(255,255,255,0.72);
-
-  border-bottom: none;
-
-}
-
-
-/* =========================================
-   TINY ANTENNAS
-========================================= */
-
-.tiny-antenna {
-
-  position: absolute;
-
-  left: 50%;
-
-  bottom: 100%;
-
-  height: 18px;
-
-  width: 1px;
-
-  background:
-    rgba(255,255,255,0.75);
-
-}
-
-
-/* =========================================
-   WILLIS TOWER
-========================================= */
-
-.willis {
-
-  position: relative;
-
-  width: 7%;
-
-  min-width: 48px;
-
-  height: 95%;
-
-  flex-shrink: 0;
-
-}
 
 
 /*
-  Bottom section
+    No windows.
+    No building lights.
+
+    Just one thin skyline outline.
 */
 
-.willis-level-1 {
+.skyline-line {
 
-  position: absolute;
+    fill:
+        rgba(
+            47,
+            27,
+            29,
+            0.30
+        );
 
-  bottom: 0;
 
-  left: 0;
+    stroke:
+        #f0b66f;
 
-  width: 100%;
 
-  height: 58%;
+    stroke-width:
+        2;
+
+
+    vector-effect:
+        non-scaling-stroke;
+
+
+    stroke-linejoin:
+        miter;
+
+
+    stroke-linecap:
+        square;
+}
+
+
+
+/* ================================= */
+/* MOBILE                            */
+/* ================================= */
+
+@media (
+    max-width: 700px
+) {
+
+    #container {
+
+        padding-left: 20px;
+        padding-right: 20px;
+
+        padding-bottom: 55px;
+    }
+
+
+    #container h1 {
+
+        font-size: 46px;
+
+        letter-spacing: 2px;
+
+        margin-bottom: 20px;
+    }
+
+
+    #counter {
+
+        gap:
+            8px
+            15px;
+
+        max-width: 500px;
+    }
+
+
+    #counter span {
+
+        font-size: 14px;
+    }
+
+
+    .skyline {
+
+        height: 25%;
+    }
 
 }
 
 
-/*
-  Middle setback
-*/
 
-.willis-level-2 {
+/* ================================= */
+/* REDUCED MOTION                    */
+/* ================================= */
 
-  position: absolute;
+@media (
+    prefers-reduced-motion: reduce
+) {
 
-  bottom: 58%;
+    .pixel-leaf {
 
-  left: 17%;
+        animation: none;
 
-  width: 66%;
-
-  height: 21%;
-
-}
-
-
-/*
-  Upper setback
-*/
-
-.willis-level-3 {
-
-  position: absolute;
-
-  bottom: 79%;
-
-  left: 31%;
-
-  width: 38%;
-
-  height: 13%;
-
-}
-
-
-.willis-level {
-
-  background: transparent;
-
-  border:
-
-    1px solid
-    rgba(255,255,255,0.82);
-
-  border-bottom: none;
-
-}
-
-
-/*
-  Willis antennas
-*/
-
-.willis-antenna {
-
-  position: absolute;
-
-  bottom: 92%;
-
-  width: 1px;
-
-  height: 23%;
-
-  background:
-    rgba(255,255,255,0.8);
-
-}
-
-
-.willis-antenna.antenna-left {
-
-  left: 42%;
-
-}
-
-
-.willis-antenna.antenna-right {
-
-  right: 42%;
-
-}
-
-
-/* =========================================
-   POINTED BUILDING
-========================================= */
-
-.point-tower {
-
-  position: relative;
-
-  width: 3.5%;
-
-  min-width: 20px;
-
-  height: 52%;
-
-  border:
-
-    1px solid
-    rgba(255,255,255,0.7);
-
-  border-bottom: none;
-
-}
-
-
-.point-roof {
-
-  position: absolute;
-
-  left: 50%;
-
-  bottom: 100%;
-
-  width: 70%;
-
-  aspect-ratio: 1 / 0.65;
-
-  transform:
-
-    translateX(-50%)
-    rotate(45deg);
-
-  border-left:
-
-    1px solid
-    rgba(255,255,255,0.7);
-
-  border-top:
-
-    1px solid
-    rgba(255,255,255,0.7);
-
-}
-
-
-/* =========================================
-   AON CENTER STYLE
-========================================= */
-
-.aon {
-
-  position: relative;
-
-  width: 4%;
-
-  min-width: 25px;
-
-  height: 74%;
-
-  background: transparent;
-
-  border:
-
-    1px solid
-    rgba(255,255,255,0.78);
-
-  border-bottom: none;
-
-}
-
-
-/* Small roof lip */
-
-.aon::before {
-
-  content: "";
-
-  position: absolute;
-
-  left: 15%;
-
-  bottom: 100%;
-
-  width: 70%;
-
-  height: 3px;
-
-  border-top:
-
-    1px solid
-    rgba(255,255,255,0.75);
-
-}
-
-
-/* =========================================
-   JOHN HANCOCK CENTER
-========================================= */
-
-.hancock {
-
-  position: relative;
-
-  width: 6%;
-
-  min-width: 42px;
-
-  height: 80%;
-
-  flex-shrink: 0;
-
-}
-
-
-.hancock-body {
-
-  position: absolute;
-
-  bottom: 0;
-
-  left: 8%;
-
-  width: 84%;
-
-  height: 88%;
-
-  background: transparent;
-
-
-  /*
-    Slight taper using clip-path
-  */
-
-  clip-path:
-
-    polygon(
-      18% 0,
-      82% 0,
-      100% 100%,
-      0 100%
-    );
-
-
-  /*
-    Outline via pseudo-outline technique
-  */
-
-  border:
-
-    1px solid
-    rgba(255,255,255,0.82);
-
-}
-
-
-/*
-  Hancock cross braces
-*/
-
-.hancock-body::before {
-
-  content: "";
-
-  position: absolute;
-
-  inset: 5% 12%;
-
-  background:
-
-    linear-gradient(
-      45deg,
-
-      transparent 48%,
-
-      rgba(255,255,255,0.5) 49%,
-
-      rgba(255,255,255,0.5) 51%,
-
-      transparent 52%
-    ),
-
-    linear-gradient(
-      -45deg,
-
-      transparent 48%,
-
-      rgba(255,255,255,0.5) 49%,
-
-      rgba(255,255,255,0.5) 51%,
-
-      transparent 52%
-    );
-
-}
-
-
-/*
-  Hancock antennas
-*/
-
-.hancock-antenna {
-
-  position: absolute;
-
-  bottom: 88%;
-
-  height: 20%;
-
-  width: 1px;
-
-  background:
-    rgba(255,255,255,0.8);
-
-}
-
-
-.hancock-left {
-
-  left: 40%;
-
-}
-
-
-.hancock-right {
-
-  right: 40%;
-
-}
-
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media screen and (min-width: 500px) {
-
-  .timer {
-
-    font-size: 31px;
-
-  }
-
-}
-
-
-@media screen and (min-width: 768px) {
-
-  .timer {
-
-    font-size: 33px;
-
-  }
-
-}
-
-
-/* =========================================
-   DESKTOP COUNTER
-========================================= */
-
-@media screen and (min-width: 920px) {
-
-  #counter {
-
-    flex-direction: row;
-
-    gap: 28px;
-
-  }
-
-
-  .timer {
-
-    font-size: 35px;
-
-  }
-
-}
-
-
-/* =========================================
-   SMALL PHONE
-========================================= */
-
-@media screen and (max-width: 499px) {
-
-  #container {
-
-    padding-bottom: 14vh;
-
-  }
-
-
-  .timer {
-
-    font-size: 23px;
-
-  }
-
-
-  .skyline {
-
-    height: 20vh;
-
-  }
-
-
-  /*
-    Keep skyline from becoming too
-    crowded on tiny screens.
-  */
-
-  .building {
-
-    min-width: 8px;
-
-  }
-
-
-  .willis {
-
-    min-width: 30px;
-
-  }
-
-
-  .hancock {
-
-    min-width: 27px;
-
-  }
+        display: none;
+    }
 
 }
