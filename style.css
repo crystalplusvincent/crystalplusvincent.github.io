@@ -3,7 +3,6 @@
 /* ================================= */
 
 @keyframes fade {
-
     from {
         opacity: 0;
     }
@@ -11,14 +10,12 @@
     to {
         opacity: 1;
     }
-
 }
 
 
 * {
     margin: 0;
     padding: 0;
-
     box-sizing: border-box;
 }
 
@@ -31,15 +28,12 @@ body {
 
 
 body {
-
-    font-family:
-        "Courier New",
-        monospace;
+    font-family: "Courier New", monospace;
 
     overflow: hidden;
-
     position: relative;
 
+    color: #f4e4c3;
 
     /*
         FALL SKY
@@ -51,26 +45,14 @@ body {
     background:
         linear-gradient(
             to bottom,
-
             #241821 0%,
-
             #352029 28%,
-
             #563029 58%,
-
             #88472c 80%,
-
             #b26435 100%
         );
 
-
-    color: #f4e4c3;
-
-
-    animation:
-        fade
-        0.8s
-        ease;
+    animation: fade 0.8s ease;
 }
 
 
@@ -80,9 +62,7 @@ body {
 /* ================================= */
 
 #autumn-background {
-
     position: fixed;
-
     inset: 0;
 
     overflow: hidden;
@@ -99,18 +79,17 @@ body {
 /* ================================= */
 
 .cloud {
-
     position: absolute;
 
     height: 12px;
 
-    background: rgba(
-        99,
-        49,
-        39,
-        0.34
-    );
-
+    background:
+        rgba(
+            99,
+            49,
+            39,
+            0.34
+        );
 
     /*
         Hard edges instead of blur
@@ -118,20 +97,14 @@ body {
     */
 
     box-shadow:
-
         18px 8px 0 rgba(99, 49, 39, 0.30),
-
         42px -4px 0 rgba(99, 49, 39, 0.26),
-
         70px 6px 0 rgba(99, 49, 39, 0.22),
-
         100px 0 0 rgba(99, 49, 39, 0.18);
 }
 
 
-
 .cloud-one {
-
     width: 180px;
 
     left: 5%;
@@ -139,9 +112,7 @@ body {
 }
 
 
-
 .cloud-two {
-
     width: 240px;
 
     right: 8%;
@@ -151,9 +122,7 @@ body {
 }
 
 
-
 .cloud-three {
-
     width: 140px;
 
     left: 35%;
@@ -169,10 +138,11 @@ body {
 /* ================================= */
 
 #leaf-layer {
-
     position: absolute;
-
     inset: 0;
+
+    width: 100%;
+    height: 100%;
 
     overflow: hidden;
 
@@ -186,32 +156,24 @@ body {
 /* ================================= */
 
 .pixel-leaf {
-
     position: absolute;
 
-    left: 0;
     top: -40px;
-
 
     width: 15px;
     height: 17px;
 
-
     color: #d86b28;
 
-
     /*
-        IMPORTANT:
+        The starting horizontal position
+        is controlled by "left" in JS.
 
-        steps() deliberately removes
-        smooth 60fps movement.
-
-        This makes the leaves move
-        like sprites in an old game.
+        The transform is ONLY responsible
+        for falling, drifting and tumbling.
     */
 
     animation:
-
         leaf-fall
         var(--fall-duration)
         steps(
@@ -221,10 +183,13 @@ body {
         var(--fall-delay)
         infinite;
 
+    transform-origin: center;
 
     will-change:
         transform,
         opacity;
+
+    image-rendering: pixelated;
 }
 
 
@@ -233,80 +198,66 @@ body {
 /* PIXEL MAPLE LEAF                  */
 /* ================================= */
 
-/*
-    The leaf is constructed using
-    one central pixel block and
-    box-shadow copies.
-
-    No image file required.
-*/
-
 .pixel-leaf::before {
-
     content: "";
 
     position: absolute;
 
-
     width: 3px;
     height: 3px;
-
 
     left: 6px;
     top: 6px;
 
-
     background:
         currentColor;
 
+    /*
+        The maple leaf is made entirely
+        from square pixels.
+
+        No emoji.
+        No image file.
+    */
 
     box-shadow:
 
-        /* top point */
+        /* top */
 
         0 -6px 0 currentColor,
-
         0 -3px 0 currentColor,
 
 
         /* upper left */
 
         -3px -3px 0 currentColor,
-
         -6px -3px 0 currentColor,
-
         -3px 0 0 currentColor,
 
 
         /* upper right */
 
         3px -3px 0 currentColor,
-
         6px -3px 0 currentColor,
-
         3px 0 0 currentColor,
 
 
-        /* side points */
+        /* outer points */
 
         -6px 0 0 currentColor,
-
         6px 0 0 currentColor,
 
 
         /* lower body */
 
         -3px 3px 0 currentColor,
-
-        3px 3px 0 currentColor,
-
         0 3px 0 currentColor,
+        3px 3px 0 currentColor,
 
 
         /* stem */
 
         0 6px 0 #8f3d22,
-
         0 9px 0 #8f3d22;
 }
 
@@ -317,200 +268,137 @@ body {
 /* ================================= */
 
 .pixel-leaf.orange {
-
     color: #df7126;
 }
 
 
 .pixel-leaf.burnt {
-
     color: #bb4b24;
 }
 
 
 .pixel-leaf.gold {
-
     color: #e69a37;
 }
 
 
 .pixel-leaf.red {
-
     color: #a93d29;
 }
 
 
 
 /* ================================= */
-/* FALLING ANIMATION                 */
+/* FALLING LEAF ANIMATION            */
 /* ================================= */
+
+/*
+    IMPORTANT:
+
+    We are NOT using the transform
+    to position the leaf horizontally
+    anymore.
+
+    The leaf already has a random
+    "left" value from 0% to 100%.
+
+    These translate values only create
+    the wind drift.
+*/
 
 @keyframes leaf-fall {
 
     0% {
-
         transform:
-
             translate(
-                var(--start-x),
+                0,
                 -60px
             )
-
-            rotate(
-                0deg
-            )
-
+            rotate(0deg)
             scale(
                 var(--leaf-scale)
             );
 
-
         opacity: 0;
-
     }
 
 
     5% {
-
         opacity:
             var(--leaf-opacity);
-
     }
 
 
     20% {
-
         transform:
-
             translate(
-                calc(
-                    var(--start-x)
-                    +
-                    var(--drift-one)
-                ),
-
+                var(--drift-one),
                 20vh
             )
-
-            rotate(
-                45deg
-            )
-
+            rotate(45deg)
             scale(
                 var(--leaf-scale)
             );
-
     }
 
 
     40% {
-
         transform:
-
             translate(
-                calc(
-                    var(--start-x)
-                    +
-                    var(--drift-two)
-                ),
-
+                var(--drift-two),
                 40vh
             )
-
-            rotate(
-                135deg
-            )
-
+            rotate(135deg)
             scale(
                 var(--leaf-scale)
             );
-
     }
 
 
     60% {
-
         transform:
-
             translate(
-                calc(
-                    var(--start-x)
-                    +
-                    var(--drift-three)
-                ),
-
+                var(--drift-three),
                 60vh
             )
-
-            rotate(
-                225deg
-            )
-
+            rotate(225deg)
             scale(
                 var(--leaf-scale)
             );
-
     }
 
 
     80% {
-
         transform:
-
             translate(
-                calc(
-                    var(--start-x)
-                    +
-                    var(--drift-four)
-                ),
-
+                var(--drift-four),
                 80vh
             )
-
-            rotate(
-                315deg
-            )
-
+            rotate(315deg)
             scale(
                 var(--leaf-scale)
             );
-
     }
 
 
     95% {
-
         opacity:
             var(--leaf-opacity);
-
     }
 
 
     100% {
-
         transform:
-
             translate(
-                calc(
-                    var(--start-x)
-                    +
-                    var(--drift-five)
-                ),
-
+                var(--drift-five),
                 110vh
             )
-
-            rotate(
-                405deg
-            )
-
+            rotate(405deg)
             scale(
                 var(--leaf-scale)
             );
 
-
         opacity: 0;
-
     }
 
 }
@@ -522,27 +410,21 @@ body {
 /* ================================= */
 
 #container {
-
     position: relative;
 
     z-index: 5;
 
-
     width: 100%;
     height: 100%;
-
 
     display: flex;
 
     flex-direction: column;
 
     align-items: center;
-
     justify-content: center;
 
-
     text-align: center;
-
 
     padding-bottom: 70px;
 }
@@ -554,25 +436,19 @@ body {
 /* ================================= */
 
 #container h1 {
-
     font-size: 72px;
 
     font-weight: 700;
 
     line-height: 1;
 
-
     text-transform: uppercase;
-
 
     letter-spacing: 3px;
 
-
     color: #f5dfba;
 
-
     text-shadow:
-
         3px 3px 0
         rgba(
             72,
@@ -580,7 +456,6 @@ body {
             29,
             0.7
         );
-
 
     margin-bottom: 25px;
 }
@@ -592,39 +467,29 @@ body {
 /* ================================= */
 
 #counter {
-
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     flex-wrap: wrap;
 
-
     gap: 22px;
 
-
     max-width: 1000px;
-
 
     color: #f3c68b;
 }
 
 
-
 #counter span {
-
     font-size: 19px;
 
     font-weight: 700;
 
-
     letter-spacing: 1px;
 
-
     text-transform: uppercase;
-
 
     white-space: nowrap;
 }
@@ -636,15 +501,11 @@ body {
 /* ================================= */
 
 #subtitle {
-
     display: none;
-
 
     margin-top: 30px;
 
-
     font-size: 20px;
-
 
     color: #f4e4c3;
 }
@@ -656,7 +517,6 @@ body {
 /* ================================= */
 
 #images {
-
     display: none;
 }
 
@@ -667,45 +527,36 @@ body {
 /* ================================= */
 
 .skyline {
-
     position: absolute;
 
     z-index: 3;
 
-
     left: 0;
     bottom: 0;
 
-
     width: 100%;
     height: 31%;
-
 
     pointer-events: none;
 }
 
 
-
 .skyline svg {
-
     display: block;
-
 
     width: 100%;
     height: 100%;
 }
 
 
-
 /*
     No windows.
-    No building lights.
+    No lights.
 
-    Just one thin skyline outline.
+    Just the skyline silhouette.
 */
 
 .skyline-line {
-
     fill:
         rgba(
             47,
@@ -714,25 +565,16 @@ body {
             0.30
         );
 
+    stroke: #f0b66f;
 
-    stroke:
-        #f0b66f;
-
-
-    stroke-width:
-        2;
-
+    stroke-width: 2;
 
     vector-effect:
         non-scaling-stroke;
 
+    stroke-linejoin: miter;
 
-    stroke-linejoin:
-        miter;
-
-
-    stroke-linecap:
-        square;
+    stroke-linecap: square;
 }
 
 
@@ -741,12 +583,9 @@ body {
 /* MOBILE                            */
 /* ================================= */
 
-@media (
-    max-width: 700px
-) {
+@media (max-width: 700px) {
 
     #container {
-
         padding-left: 20px;
         padding-right: 20px;
 
@@ -755,7 +594,6 @@ body {
 
 
     #container h1 {
-
         font-size: 46px;
 
         letter-spacing: 2px;
@@ -765,7 +603,6 @@ body {
 
 
     #counter {
-
         gap:
             8px
             15px;
@@ -775,13 +612,11 @@ body {
 
 
     #counter span {
-
         font-size: 14px;
     }
 
 
     .skyline {
-
         height: 25%;
     }
 
@@ -798,7 +633,6 @@ body {
 ) {
 
     .pixel-leaf {
-
         animation: none;
 
         display: none;
