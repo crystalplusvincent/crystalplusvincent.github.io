@@ -5,7 +5,7 @@
 window.onload = function () {
 
     /*
-        Your original count-up date.
+        Original Chicago count-up clock.
     */
 
     countUpFromTime(
@@ -15,8 +15,7 @@ window.onload = function () {
 
 
     /*
-        Create the falling
-        pixel maple leaves.
+        Create autumn leaves.
     */
 
     createAutumnLeaves();
@@ -172,7 +171,7 @@ function countUpFromTime(
 
 
     /* ================================= */
-    /* ELEMENTS                          */
+    /* CLOCK ELEMENTS                    */
     /* ================================= */
 
     var yearID =
@@ -335,29 +334,39 @@ function countUpFromTime(
         days === 0
     ) {
 
-        document
-            .getElementById(
+        var subtitle =
+            document.getElementById(
                 "subtitle"
-            )
-            .style
-            .display =
-                "inline-block";
+            );
 
 
-        document
-            .getElementById(
+        var images =
+            document.getElementById(
                 "images"
-            )
-            .style
-            .display =
+            );
+
+
+        if (subtitle) {
+
+            subtitle.style.display =
                 "inline-block";
+
+        }
+
+
+        if (images) {
+
+            images.style.display =
+                "inline-block";
+
+        }
 
     }
 
 
 
     /* ================================= */
-    /* UPDATE EVERY SECOND               */
+    /* UPDATE CLOCK                      */
     /* ================================= */
 
     clearTimeout(
@@ -384,7 +393,7 @@ function countUpFromTime(
 
 
 /* ================================= */
-/* AUTUMN LEAVES                     */
+/* CREATE AUTUMN LEAVES              */
 /* ================================= */
 
 function createAutumnLeaves() {
@@ -395,31 +404,22 @@ function createAutumnLeaves() {
         );
 
 
-    if (
-        !leafLayer
-    ) {
-
+    if (!leafLayer) {
         return;
-
     }
 
 
 
     /*
-        Number of leaves visible
-        in the animation.
+        Keep this relatively sparse.
 
-        Keep this relatively low so
-        the page stays minimalist.
+        Enough leaves for atmosphere
+        without covering the counter.
     */
 
-    const leafCount = 14;
+    const leafCount = 16;
 
 
-
-    /*
-        Four autumn colors.
-    */
 
     const colors = [
 
@@ -473,25 +473,31 @@ function createAutumnLeaves() {
 
 
         /* ================================= */
-        /* HORIZONTAL START                  */
+        /* START POSITION                    */
         /* ================================= */
 
-        const startX =
+        /*
+            Actual CSS position instead of
+            transform position.
+
+            This distributes leaves across
+            the entire screen, including
+            the far left.
+        */
+
+        const startPosition =
             Math.random() *
-            window.innerWidth;
+            100;
+
+
+        leaf.style.left =
+            `${startPosition}%`;
 
 
 
         /* ================================= */
         /* FALL SPEED                        */
         /* ================================= */
-
-        /*
-            6–11 seconds.
-
-            Larger variation makes some
-            leaves feel closer/farther.
-        */
 
         const duration =
             6 +
@@ -501,14 +507,8 @@ function createAutumnLeaves() {
 
 
         /* ================================= */
-        /* START DELAY                       */
+        /* START AT RANDOM HEIGHT            */
         /* ================================= */
-
-        /*
-            Negative delay means the page
-            begins with leaves already at
-            different heights.
-        */
 
         const delay =
             -Math.random() *
@@ -517,7 +517,7 @@ function createAutumnLeaves() {
 
 
         /* ================================= */
-        /* LEAF SIZE                         */
+        /* SIZE                              */
         /* ================================= */
 
         const scale =
@@ -532,9 +532,9 @@ function createAutumnLeaves() {
         /* ================================= */
 
         const opacity =
-            0.50 +
+            0.55 +
             Math.random() *
-            0.45;
+            0.40;
 
 
 
@@ -543,24 +543,20 @@ function createAutumnLeaves() {
         /* ================================= */
 
         /*
-            Roughly 8–11 visual updates
-            every second.
+            Approximately 8–10 visible
+            movement updates per second.
 
-            Example:
-
-            8 second animation
-            x 9 FPS
-            = 72 visible steps.
-
-            This deliberately makes the
-            leaf "jump" between frames.
+            The browser still refreshes
+            normally, but the leaf only
+            changes position at these
+            discrete steps.
         */
 
         const framesPerSecond =
             8 +
             Math.floor(
                 Math.random() *
-                4
+                3
             );
 
 
@@ -573,60 +569,60 @@ function createAutumnLeaves() {
 
 
         /* ================================= */
-        /* WIND / SIDE-TO-SIDE DRIFT         */
+        /* WIND                              */
         /* ================================= */
 
+        const direction =
+            Math.random() < 0.5
+                ? -1
+                : 1;
+
+
+        const windStrength =
+            25 +
+            Math.random() *
+            55;
+
+
+
         /*
-            Different values at each stage
-            make the leaf weave rather than
-            falling diagonally in one line.
+            Alternating drift makes each
+            leaf flutter from side to side.
         */
 
         const driftOne =
-            randomDrift(
-                25,
-                85
-            );
+            direction *
+            windStrength;
 
 
         const driftTwo =
-            randomDrift(
-                20,
-                100
-            );
+            direction *
+            -windStrength *
+            0.55;
 
 
         const driftThree =
-            randomDrift(
-                30,
-                110
-            );
+            direction *
+            windStrength *
+            1.15;
 
 
         const driftFour =
-            randomDrift(
-                20,
-                90
-            );
+            direction *
+            -windStrength *
+            0.35;
 
 
         const driftFive =
-            randomDrift(
-                25,
-                120
-            );
+            direction *
+            windStrength *
+            0.75;
 
 
 
         /* ================================= */
         /* APPLY VARIABLES                   */
         /* ================================= */
-
-        leaf.style.setProperty(
-            "--start-x",
-            `${startX}px`
-        );
-
 
         leaf.style.setProperty(
             "--fall-duration",
@@ -689,46 +685,14 @@ function createAutumnLeaves() {
 
 
 
+        /* ================================= */
+        /* ADD LEAF                          */
+        /* ================================= */
+
         leafLayer.appendChild(
             leaf
         );
 
     }
-
-}
-
-
-
-/* ================================= */
-/* RANDOM WIND                       */
-/* ================================= */
-
-function randomDrift(
-    minimum,
-    maximum
-) {
-
-    const amount =
-        minimum +
-        Math.random() *
-        (
-            maximum -
-            minimum
-        );
-
-
-    /*
-        Randomly drift
-        left or right.
-    */
-
-    return (
-        Math.random() <
-        0.5
-    )
-
-        ? -amount
-
-        : amount;
 
 }
